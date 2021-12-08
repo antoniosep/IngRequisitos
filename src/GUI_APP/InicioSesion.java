@@ -2,9 +2,15 @@ package GUI_APP;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class InicioSesion extends JFrame{
+public class InicioSesion implements ActionListener{
     private JFrame frame;
+    private String prueba1="Antonio", prueba2="1234";
+    private JTextField usuario;
+    private JPasswordField password;
+    private JLabel ok;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -30,10 +36,10 @@ public class InicioSesion extends JFrame{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Crearemos las dos cajas para introducir datos
-        JTextField usuario = new JTextField();
+        usuario = new JTextField();
         usuario.setBounds(50, 100, 600, 50);
 
-        JPasswordField password = new JPasswordField();
+        password = new JPasswordField();
         password.setBounds(50, 200, 600, 50);
 
         frame.add(usuario);
@@ -44,11 +50,32 @@ public class InicioSesion extends JFrame{
         b1.setText("LOGIN");
         b1.setBounds(50, 300, 100, 80);
 
+        b1.addActionListener(this);
+
         frame.add(b1);
+
+        ok=new JLabel();
+        ok.setBounds(200, 300, 20, 20);
+        ok.setVisible(false);
+        frame.add(ok);
 
         //Haremos visible la ventana
         frame.setLayout(null);
         frame.setVisible(true);
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String pass="";
+        for(Character c : this.password.getPassword()){pass = pass + c;}
+
+        if (this.usuario.getText().compareTo(this.prueba1)==0 && pass.compareTo(this.prueba2)==0){
+            ok.setText("SI");
+        }else{
+            ok.setText("NO");
+        }
+
+        ok.setVisible(true);
     }
 }
