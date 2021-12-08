@@ -13,11 +13,14 @@ import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 import java.awt.CardLayout;
 import javax.swing.JToolBar;
+import javax.swing.JLabel;
+
+/*
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.FormSpecs;
-import javax.swing.JLabel;
+ */
 
 public class InterfazAlemania {
 
