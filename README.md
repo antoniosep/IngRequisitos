@@ -3,7 +3,7 @@
 ## Cosas por hacer:
 * Inicio Sesión
   * ~~Hacer ActionListener botón~~
-  * Hacer Lector de los campos: usuario y contraseña
+  * ~~Hacer Lector de los campos: usuario y contraseña~~
  
 * Informe Alemania
   * Hacer ActionListener botones
