@@ -1,7 +1,5 @@
 # IntelliJ
 .idea/
-out/
-Multicenter.iml
 
 # Eclipse
 .settings/
