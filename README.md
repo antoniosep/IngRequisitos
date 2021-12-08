@@ -2,7 +2,7 @@
 
 ## Cosas por hacer:
 * Inicio Sesión
-  * [x] Hacer ActionListener botón
+  * [X] Hacer ActionListener botón
   * [ ] Hacer Lector de los campos: usuario y contraseña
  
 * Informe Alemania
