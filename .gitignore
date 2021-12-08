@@ -1,0 +1,15 @@
+# IntelliJ
+.idea/
+out/
+Multicenter.iml
+
+# Eclipse
+.settings/
+.classpath
+.project
+
+# vscode
+.vscode/
+
+# Maven
+target/
