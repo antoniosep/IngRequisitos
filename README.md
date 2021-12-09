@@ -6,8 +6,12 @@
   * ~~Hacer Lector de los campos: usuario y contraseña~~
  
 * Informe Alemania
-  * Hacer ActionListener botones
+  * Hacer botones funcionales
+    * Informe Semanal
+    * Cerrar Sesión
+    * ?
   * Generar Informe en csv
+    * Botón guardar
 
 * Informe Holandés
   * Hacer ActionListener botones
