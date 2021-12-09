@@ -1,5 +1,9 @@
 package GUI_APP;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,6 +16,8 @@ public class InterfazInforme {
 
 	private JFrame frame;
 	private JTextField textField;
+	private InterfazAlemania alemania;
+	private Integer periodo; //0 inicial, 1 semanal
 
 	/**
 	 * Launch the application.
@@ -20,7 +26,7 @@ public class InterfazInforme {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InterfazInforme window = new InterfazInforme();
+					InterfazInforme window = new InterfazInforme(null, 0);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +38,9 @@ public class InterfazInforme {
 	/**
 	 * Create the application.
 	 */
-	public InterfazInforme() {
+	public InterfazInforme(InterfazAlemania alemania, int periodo) {
+		this.alemania=alemania;
+		this.periodo=periodo;
 		initialize();
 	}
 
@@ -59,9 +67,16 @@ public class InterfazInforme {
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JButton btnCerrarSesin = new JButton("Atr\u00E1s");
-		btnCerrarSesin.setBounds(53, 23, 109, 25);
-		panel_1.add(btnCerrarSesin);
+		JButton atras = new JButton("Atr\u00E1s");
+		atras.setBounds(53, 23, 109, 25);
+		atras.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				alemania.setVisible(true);
+			}
+		});
+		panel_1.add(atras);
 		
 		JTextPane textPane = new JTextPane();
 		textPane.setBounds(53, 58, 349, 311);
@@ -79,5 +94,7 @@ public class InterfazInforme {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.setBounds(425, 229, 123, 31);
 		panel_1.add(btnGuardar);
+
+		frame.setVisible(true);
 	}
 }

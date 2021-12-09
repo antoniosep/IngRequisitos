@@ -22,9 +22,11 @@ import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.FormSpecs;
  */
 
-public class InterfazAlemania {
+public class InterfazAlemania implements ActionListener{
 
 	private JFrame frame;
+	private JLabel label;
+	private JPanel panel;
 
 	/**
 	 * Launch the application.
@@ -77,9 +79,12 @@ public class InterfazAlemania {
 		panel_1.add(panel_2);
 		panel_2.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Generar informe inicial");
-		btnNewButton.setBounds(176, 74, 338, 43);
-		panel_2.add(btnNewButton);
+		JButton btnGenerarInformeInicial = new JButton("Generar informe inicial");
+		btnGenerarInformeInicial.setBounds(176, 74, 338, 43);
+
+		btnGenerarInformeInicial.addActionListener(this);
+
+		panel_2.add(btnGenerarInformeInicial);
 		
 		JButton btnGenerarInformeSemanal = new JButton("Generar informe semanal");
 		btnGenerarInformeSemanal.setBounds(176, 149, 338, 43);
@@ -92,5 +97,16 @@ public class InterfazAlemania {
 		JButton button = new JButton("?");
 		button.setBounds(655, 18, 43, 42);
 		panel_1.add(button);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		frame.setVisible(false);
+		//if(e.getSource()==)
+		InterfazInforme informe = new InterfazInforme(this, 0);
+	}
+
+	public void setVisible(boolean valor){
+		frame.setVisible(valor);
 	}
 }

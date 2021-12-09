@@ -34,6 +34,12 @@ public class InicioSesion implements ActionListener{
         frame = new JFrame();
         frame.setBounds(100, 100, 786, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(null);
+
+        JPanel panel = new JPanel();
+        panel.setBounds(0, 0, 786, 500);
+        panel.setLayout(null);
+        frame.getContentPane().add(panel);
 
         //Crearemos las dos cajas para introducir datos
         usuario = new JTextField();
@@ -42,8 +48,8 @@ public class InicioSesion implements ActionListener{
         password = new JPasswordField();
         password.setBounds(50, 200, 600, 50);
 
-        frame.add(usuario);
-        frame.add(password);
+        panel.add(usuario);
+        panel.add(password);
 
         //Crearemos el botón para acceder a la cuenta
         JButton b1 = new JButton();
@@ -52,15 +58,15 @@ public class InicioSesion implements ActionListener{
 
         b1.addActionListener(this);
 
-        frame.add(b1);
+        panel.add(b1);
 
         ok=new JLabel();
         ok.setBounds(200, 300, 20, 20);
         ok.setVisible(false);
-        frame.add(ok);
+        panel.add(ok);
 
         //Haremos visible la ventana
-        frame.setLayout(null);
+
         frame.setVisible(true);
 
     }
