@@ -22,11 +22,12 @@ import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.FormSpecs;
  */
 
-public class InterfazAlemania implements ActionListener{
+public class InterfazAlemania{
 
 	private JFrame frame;
 	private JLabel label;
 	private JPanel panel;
+	private InicioSesion inicio;
 
 	/**
 	 * Launch the application.
@@ -35,7 +36,7 @@ public class InterfazAlemania implements ActionListener{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InterfazAlemania window = new InterfazAlemania();
+					InterfazAlemania window = new InterfazAlemania(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +48,19 @@ public class InterfazAlemania implements ActionListener{
 	/**
 	 * Create the application.
 	 */
-	public InterfazAlemania() {
+	public InterfazAlemania(InicioSesion login)
+	{
+		this.inicio=login;
+
+		if(login==null){
+			this.frame=new JFrame();
+			this.frame.setBounds(100, 100, 786, 470);
+			this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.frame.getContentPane().setLayout(null);
+			this.frame.setVisible(true);
+		}else{
+			this.frame=login.getFrame();
+		}
 		initialize();
 	}
 
@@ -55,58 +68,81 @@ public class InterfazAlemania implements ActionListener{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 786, 470);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		
-		JLabel label = new JLabel("");
-		label.setBounds(0, 0, 0, 0);
-		frame.getContentPane().add(label);
-		
-		JPanel panel = new JPanel();
+		setPanel();
+	}
+
+	public void setPanel(){
+		panel = new JPanel();
 		panel.setBounds(10, 10, 752, 413);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(10, 10, 732, 393);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
-		
+
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(10, 81, 700, 270);
 		panel_1.add(panel_2);
 		panel_2.setLayout(null);
-		
+
 		JButton btnGenerarInformeInicial = new JButton("Generar informe inicial");
 		btnGenerarInformeInicial.setBounds(176, 74, 338, 43);
 
-		btnGenerarInformeInicial.addActionListener(this);
+		btnGenerarInformeInicial.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panel.setVisible(false);
+				frame.getContentPane().remove(panel);
+				//if(e.getSource()==)
+				InterfazInforme informe = new InterfazInforme(InterfazAlemania.this, 0);
+			}
+		});
 
 		panel_2.add(btnGenerarInformeInicial);
-		
+
 		JButton btnGenerarInformeSemanal = new JButton("Generar informe semanal");
 		btnGenerarInformeSemanal.setBounds(176, 149, 338, 43);
+
+		btnGenerarInformeSemanal.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panel.setVisible(false);
+				frame.getContentPane().remove(panel);
+				//if(e.getSource()==)
+				InterfazInforme informe = new InterfazInforme(InterfazAlemania.this, 1);
+			}
+		});
+
 		panel_2.add(btnGenerarInformeSemanal);
-		
+
 		JButton btnCerrarSesin = new JButton("Cerrar Sesi\u00F3n");
 		btnCerrarSesin.setBounds(10, 24, 137, 31);
+
+		btnCerrarSesin.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panel.setVisible(false);
+				frame.getContentPane().remove(panel);
+				inicio.setPanel();
+			}
+		});
+
 		panel_1.add(btnCerrarSesin);
-		
+
 		JButton button = new JButton("?");
 		button.setBounds(655, 18, 43, 42);
 		panel_1.add(button);
-	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		frame.setVisible(false);
-		//if(e.getSource()==)
-		InterfazInforme informe = new InterfazInforme(this, 0);
+		panel.setVisible(true);
 	}
 
 	public void setVisible(boolean valor){
 		frame.setVisible(valor);
+	}
+
+	public JFrame getFrame() {
+		return frame;
 	}
 }

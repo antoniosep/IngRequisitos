@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 public class InicioSesion implements ActionListener{
     private JFrame frame;
+    private JPanel panel;
     private String prueba1="Antonio", prueba2="1234";
     private JTextField usuario;
     private JPasswordField password;
@@ -26,17 +27,20 @@ public class InicioSesion implements ActionListener{
     }
 
     public InicioSesion(){
-        initialize();
-    }
-
-    private void initialize() {
-        //Creamos el frame
         frame = new JFrame();
         frame.setBounds(100, 100, 786, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
+        frame.setVisible(true);
+        initialize();
+    }
 
-        JPanel panel = new JPanel();
+    private void initialize() {
+        setPanel();
+    }
+
+    public void setPanel(){
+        panel = new JPanel();
         panel.setBounds(0, 0, 786, 500);
         panel.setLayout(null);
         frame.getContentPane().add(panel);
@@ -65,9 +69,9 @@ public class InicioSesion implements ActionListener{
         ok.setVisible(false);
         panel.add(ok);
 
-        //Haremos visible la ventana
+        //Haremos visible el panel
 
-        frame.setVisible(true);
+        panel.setVisible(true);
 
     }
 
@@ -78,10 +82,17 @@ public class InicioSesion implements ActionListener{
 
         if (this.usuario.getText().compareTo(this.prueba1)==0 && pass.compareTo(this.prueba2)==0){
             ok.setText("SI");
+            panel.setVisible(false);
+            frame.getContentPane().remove(panel);
+            InterfazAlemania alemania = new InterfazAlemania(this);
         }else{
             ok.setText("NO");
         }
 
         ok.setVisible(true);
+    }
+
+    public JFrame getFrame() {
+        return frame;
     }
 }
