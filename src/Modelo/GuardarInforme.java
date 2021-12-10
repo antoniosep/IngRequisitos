@@ -22,8 +22,8 @@ public class GuardarInforme {
         filepath=filepath+"\\"+archivo;
 
             GuardarCrear(txt, archivo);
-            System.out.println("Origen:"+origen);
-            System.out.println("Destino:"+filepath);
+            //System.out.println("Origen:"+origen);
+            //System.out.println("Destino:"+filepath);
             moverArchivo(origen, filepath);
             //System.out.println("hola");
         }
