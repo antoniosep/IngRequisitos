@@ -10,7 +10,7 @@
     * ~~Informe Semanal~~
     * ~~Cerrar Sesión~~
     * ?
-  * Generar Informe en csv
+  * Generar Informe en csv (X)
     * Botón guardar
 
 * Informe Holandés
