@@ -7,8 +7,8 @@
  
 * Informe Alemania
   * Hacer botones funcionales
-    * Informe Semanal
-    * Cerrar Sesión
+    * ~~Informe Semanal~~
+    * ~~Cerrar Sesión~~
     * ?
   * Generar Informe en csv
     * Botón guardar
