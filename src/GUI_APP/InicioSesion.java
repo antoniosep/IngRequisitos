@@ -1,19 +1,40 @@
 package GUI_APP;
 
+import Modelo.Clientes;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
 
 public class InicioSesion implements ActionListener{
     private JFrame frame;
     private JPanel panel;
-    private String prueba1="Antonio", prueba2="1234";
     private JTextField usuario;
     private JPasswordField password;
     private JLabel ok;
 
+    static final String BD_SERVER = "jdbc:mysql://eburyrequisitos.cobadwnzalab.eu-central-1.rds.amazonaws.com";
+    static final String BD_NAME = "grupo07DB";
+    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    static final String USER = "grupo07";
+    static final String PASS = "FjLWM6DNk6TJDzfV";
+
+    private static Connection conn;
+
+
     public static void main(String[] args) {
+        try {
+            // create connection for database called DBB_SCHEMA in a server installed in
+            // DB_URL, with a user USER with password PASS
+            //Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(BD_SERVER + "/" + BD_NAME, USER, PASS);
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -78,8 +99,10 @@ public class InicioSesion implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         String pass="";
-        for(Character c : this.password.getPassword()){pass = pass + c;}
-
+        for(Character c : this.password.getPassword()){
+            pass = pass + c;
+        }
+    /*
         if (this.usuario.getText().compareTo(this.prueba1)==0 && pass.compareTo(this.prueba2)==0){
             ok.setText("SI");
             panel.setVisible(false);
@@ -90,9 +113,44 @@ public class InicioSesion implements ActionListener{
         }
 
         ok.setVisible(true);
+        */
+        if (inicioSesion(this.usuario.getText(),pass)!=null){
+            ok.setText("SI");
+            panel.setVisible(false);
+            frame.getContentPane().remove(panel);
+            InterfazAlemania alemania = new InterfazAlemania(this);
+        }else{
+            ok.setText("NO");
+        }
+
+        ok.setVisible(true);
+
     }
 
     public JFrame getFrame() {
         return frame;
+    }
+
+    public Clientes inicioSesion(String usr, String psw) {
+
+        String selectQueryBody = "SELECT * FROM cliente WHERE id=?";
+        Clientes res = null;
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(selectQueryBody);
+            preparedStatement.setString(1, usr);
+            ResultSet rs = preparedStatement.executeQuery();
+            System.out.println(rs.getRow());
+            if (rs.isBeforeFirst()) {
+                if (rs.next()) {
+                    res = new Clientes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5));
+                    System.out.println(res.getPsw());
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return (res.getPsw().equals(psw)) ? res : null;
     }
 }
