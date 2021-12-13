@@ -3,6 +3,7 @@ package GUI_APP;
 import Modelo.DBaccess;
 import Modelo.GuardarInforme;
 import Modelo.Persona;
+import Modelo.Transaccion;
 
 import javax.swing.*;
 import java.awt.*;
@@ -250,10 +251,46 @@ public class InterfazHolanda {
                 res.add(p);
                 continue;
             }if(!textLastName.getText().isEmpty())continue;
+            if(textCodPos.getText().equals(acceso.buscarClientes("numeroIdentificacion",p.getDni()).get(0).getDireccion().getCpostal())){
+                res.add(p);
+                continue;
+            }if(!textCodPos.getText().isEmpty())continue;
+            if(textStreet.getText().equals(acceso.buscarClientes("numeroIdentificacion",p.getDni()).get(0).getDireccion().getCalle())){
+                res.add(p);
+                continue;
+            }if(!textStreet.getText().isEmpty())continue;
+            if(textNumero.getText().equals(acceso.buscarClientes("numeroIdentificacion",p.getDni()).get(0).getDireccion().getNumero())){
+                res.add(p);
+                continue;
+            }if(!textNumero.getText().isEmpty())continue;
+            if(textCity.getText().equals(acceso.buscarClientes("numeroIdentificacion",p.getDni()).get(0).getDireccion().getCiudad())){
+                res.add(p);
+                continue;
+            }if(!textCity.getText().isEmpty())continue;
             res.add(p);
         }
         return res;
     }
 
+    public String toString() {
+        String res = "";
+        List<Persona> aux = listaPersonas();
+        for(Persona p : aux){
+            res += p.getNombre();
+            res += " ";
+            res += p.getSegundoNombre();
+            res += " ";
+            res += p.getApellido();
+            res += "\n";
+            res += p.getSegundoApellido();
+            res += "\n";
+            res += p.getFechanaciMiento().toString();
+            res += "\n";
+            res += p.getDni();
+            res += "\n";
+        }
+        System.out.println(res);
+        return res;
+    }
 
 }
