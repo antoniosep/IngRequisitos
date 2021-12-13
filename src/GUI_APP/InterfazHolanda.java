@@ -1,6 +1,12 @@
 package GUI_APP;
 
+import Modelo.DBaccess;
+import Modelo.Persona;
+
 import javax.swing.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
 
 public class InterfazHolanda {
     private JFrame frame;
@@ -46,4 +52,24 @@ public class InterfazHolanda {
         InterfazHolanda holanda = new InterfazHolanda(null);
         holanda.frame.setContentPane(holanda.mainPanel);
     }
+
+    public List<Persona>  listaPersonas(){
+        DBaccess acceso = new DBaccess();
+        List<Persona> res = acceso.buscarPersonas();
+        for (Persona p : res) {
+
+            if(firstNameLabel.getText().equals(p.getNombre())){
+                res.add(p);
+                continue;
+            }if(!firstNameLabel.getText().isEmpty())continue;
+            if(textLastName.getText().equals(p.getApellido())){
+                res.add(p);
+                continue;
+            }if(!textLastName.getText().isEmpty())continue;
+            res.add(p);
+        }
+        return res;
+    }
+
+
 }
