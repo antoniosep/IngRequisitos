@@ -49,6 +49,10 @@ public class InterfazHolanda {
             this.frame = login.getFrame();
         }
 
+        String[] tiposCuenta = {"","Todas", "Activas", "Inactivas"};
+        for(String tipo : tiposCuenta){
+            comboBox1.addItem(tipo);
+        }
         comboBox1.setEnabled(false);
         textNumeroProducto.setEnabled(false);
 
@@ -63,7 +67,8 @@ public class InterfazHolanda {
         bLimpiar.setEnabled(false);
 
         frame.setContentPane(mainPanel);
-/*
+
+        /*
         healthCheck.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -77,9 +82,7 @@ public class InterfazHolanda {
                 }
             }
         });
-
-*/
-
+        */
         checkCuenta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -141,6 +144,31 @@ public class InterfazHolanda {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //TO_DO
+                if(checkCuenta.isEnabled()){
+                    int indexTipo;
+                    String numeroProducto, tipoCuenta;
+                    indexTipo=comboBox1.getSelectedIndex();
+
+                    tipoCuenta=(String) comboBox1.getItemAt(indexTipo);
+                    numeroProducto=textNumeroProducto.getText();
+
+                    textFirstName.setText(tipoCuenta);
+                    textLastName.setText(numeroProducto);
+
+                    //mostrarFiltradoCuenta();
+
+                }else{
+                    String nombre1, nombre2, ciudad, calle, numero, codPos;
+                    nombre1=textFirstName.getText();
+                    nombre2=textLastName.getText();
+                    ciudad=textCity.getText();
+                    calle=textStreet.getText();
+                    numero=textNumero.getText();
+                    codPos=textCodPos.getText();
+
+                    //mostrarFiltradoCliente();
+                }
+
             }
         });
         bLimpiar.addActionListener(new ActionListener() {
