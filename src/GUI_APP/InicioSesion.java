@@ -39,6 +39,7 @@ public class InicioSesion implements ActionListener{
         frame.setBounds(100, 100, 786, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
+        frame.setResizable(false);
         frame.setVisible(true);
         initialize();
     }
@@ -63,7 +64,6 @@ public class InicioSesion implements ActionListener{
         panel.add(usuario);
         panel.add(password);
 
-        //Crearemos el botón para acceder a la cuenta
         JButton b1 = new JButton();
         b1.setText("LOGIN");
         b1.setBounds(50, 300, 100, 80);
@@ -76,8 +76,6 @@ public class InicioSesion implements ActionListener{
         ok.setBounds(200, 300, 20, 20);
         ok.setVisible(false);
         panel.add(ok);
-
-        //Haremos visible el panel
 
         panel.setVisible(true);
 
@@ -94,7 +92,11 @@ public class InicioSesion implements ActionListener{
             ok.setText("SI");
             panel.setVisible(false);
             frame.getContentPane().remove(panel);
-            InterfazAlemania alemania = new InterfazAlemania(this);
+
+            //InterfazAlemania alemania = new InterfazAlemania(this);
+
+            InterfazHolanda holanda = new InterfazHolanda(this);
+
         }else{
             ok.setText("NO");
         }

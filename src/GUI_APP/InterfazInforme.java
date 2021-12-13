@@ -79,7 +79,7 @@ public class InterfazInforme {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panel.setVisible(false);
-				frame.getContentPane().remove(panel);
+				frame.remove(panel);
 
 				alemania.setPanel();
 			}

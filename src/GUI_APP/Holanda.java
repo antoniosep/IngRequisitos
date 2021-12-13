@@ -57,11 +57,7 @@ public class Holanda {
 		frame.setBounds(100, 100, 786, 470);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		JLabel label = new JLabel("");
-		label.setBounds(0, 0, 0, 0);
-		frame.getContentPane().add(label);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 10, 752, 413);
 		frame.getContentPane().add(panel);
