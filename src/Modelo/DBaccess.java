@@ -70,7 +70,9 @@ public class DBaccess {
             preparedStatement.setInt(1, filtro);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                res.add(new Direccion(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5)));
+                Direccion dir = new Direccion(rs.getInt(4), rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(5));
+                res.add(dir);
+                System.out.println(dir.toString());
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -169,7 +171,6 @@ public class DBaccess {
             PreparedStatement preparedStatement = conn.prepareStatement(selectQueryBody);
             //preparedStatement.setString(1,"0");
             ResultSet rs = preparedStatement.executeQuery();
-            System.out.println("hola");
             while (rs.next()) {
                     res.add(new Transaccion(rs.getString(1), rs.getDate(2), rs.getDate(3)));
             }

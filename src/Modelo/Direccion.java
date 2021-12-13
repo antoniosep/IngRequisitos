@@ -7,9 +7,10 @@ public class Direccion {
     private static String ciudad;
     private static String pais;
 
+
     public Direccion(int cpostal){
         DBaccess acceso = new DBaccess();
-        Direccion direccion = acceso.buscarDireccion("codigoPostal",cpostal).get(0);
+        Direccion direccion = acceso.buscarDireccion("cpostal",cpostal).get(0);
         this.cpostal = direccion.getCpostal();
         this.calle = direccion.getCalle();
         this.numero = direccion.getNumero();
