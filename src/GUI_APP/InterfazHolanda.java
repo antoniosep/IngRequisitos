@@ -243,10 +243,10 @@ public class InterfazHolanda {
         List<Persona> res = acceso.buscarPersonas();
         for (Persona p : res) {
 
-            if(textFirstName.getText().equals(p.getNombre())){
+            if(firstNameLabel.getText().equals(p.getNombre())){
                 res.add(p);
                 continue;
-            }if(!textFirstName.getText().isEmpty())continue;
+            }if(!firstNameLabel.getText().isEmpty())continue;
             if(textLastName.getText().equals(p.getApellido())){
                 res.add(p);
                 continue;
