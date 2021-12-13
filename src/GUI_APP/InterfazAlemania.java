@@ -95,7 +95,6 @@ public class InterfazAlemania{
 			public void actionPerformed(ActionEvent e) {
 				panel.setVisible(false);
 				frame.getContentPane().remove(panel);
-				//if(e.getSource()==)
 				InterfazInforme informe = new InterfazInforme(InterfazAlemania.this, 0);
 
 			}
@@ -111,7 +110,6 @@ public class InterfazAlemania{
 			public void actionPerformed(ActionEvent e) {
 				panel.setVisible(false);
 				frame.getContentPane().remove(panel);
-				//if(e.getSource()==)
 				InterfazInforme informe = new InterfazInforme(InterfazAlemania.this, 1);
 			}
 		});

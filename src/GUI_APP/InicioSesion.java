@@ -1,9 +1,13 @@
 package GUI_APP;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import Modelo.DBaccess;
 
@@ -12,7 +16,8 @@ public class InicioSesion implements ActionListener{
     private JPanel panel;
     private JTextField usuario;
     private JPasswordField password;
-    private JLabel ok;
+    private JLabel user, pass, loginIcon;
+    private JButton entrar;
 
     private static DBaccess acceso = null;
 
@@ -36,7 +41,7 @@ public class InicioSesion implements ActionListener{
 
     public InicioSesion(){
         frame = new JFrame();
-        frame.setBounds(100, 100, 786, 500);
+        frame.setBounds(650, 300, 500, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setResizable(false);
@@ -50,16 +55,15 @@ public class InicioSesion implements ActionListener{
 
     public void setPanel(){
         panel = new JPanel();
-        panel.setBounds(0, 0, 786, 500);
+        panel.setBounds(0, 0, 500, 300);
         panel.setLayout(null);
         frame.getContentPane().add(panel);
 
-        //Crearemos las dos cajas para introducir datos
         usuario = new JTextField();
-        usuario.setBounds(50, 100, 600, 50);
+        usuario.setBounds(120, 170, 300, 30);
 
         password = new JPasswordField();
-        password.setBounds(50, 200, 600, 50);
+        password.setBounds(120, 210, 300, 30);
 
         panel.add(usuario);
         panel.add(password);
@@ -72,14 +76,39 @@ public class InicioSesion implements ActionListener{
 
         panel.add(b1);
 
-        ok=new JLabel();
-        ok.setBounds(200, 300, 20, 20);
-        ok.setVisible(false);
-        panel.add(ok);
+        user=new JLabel();
+        user.setText("USER:");
+        user.setBounds(20, 170, 60, 30);
+        panel.add(user);
+
+        pass=new JLabel();
+        pass.setText("PASSWORD:");
+        pass.setBounds(20, 210, 90, 30);
+        panel.add(pass);
+
+        loginIcon=new JLabel();
+        loginIcon.setBounds(200, 20, 130, 130);
+
+        ImageIcon imagenReducidaLogin =
+                new ImageIcon(new ImageIcon("src/IMG/img_337531.png").getImage().getScaledInstance(loginIcon.getWidth(), loginIcon.getHeight(), Image.SCALE_DEFAULT));
+
+        loginIcon.setIcon(imagenReducidaLogin);
+        panel.add(loginIcon);
+
+        ImageIcon imagenReducidaEntrar =
+                new ImageIcon(new ImageIcon("src/IMG/1390645.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+
+        entrar=new JButton();
+        entrar.setIcon(imagenReducidaEntrar);
+        entrar.setBounds(430, 180, 50, 50);
+        entrar.addActionListener(this);
+        entrar.setEnabled(true);
+        panel.add(entrar);
 
         panel.setVisible(true);
 
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -89,7 +118,7 @@ public class InicioSesion implements ActionListener{
         }
 
         if (acceso.inicioSesion(this.usuario.getText(),pass)!=null){
-            ok.setText("SI");
+
             panel.setVisible(false);
             frame.getContentPane().remove(panel);
 
@@ -98,10 +127,8 @@ public class InicioSesion implements ActionListener{
             //InterfazHolanda holanda = new InterfazHolanda(this);
 
         }else{
-            ok.setText("NO");
-        }
 
-        ok.setVisible(true);
+        }
 
     }
 
