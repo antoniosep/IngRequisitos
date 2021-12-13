@@ -40,16 +40,13 @@ public class InterfazHolanda {
     private InicioSesion login;
 
     public InterfazHolanda(InicioSesion inicio){
-        if(inicio==null){
-            frame=new JFrame();
-            frame.setBounds(100, 100, 900, 600);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.getContentPane().setLayout(null);
-            frame.setVisible(true);
-        }else {
-            login = inicio;
-            this.frame = login.getFrame();
-        }
+        frame=new JFrame();
+        frame.setBounds(100, 100, 900, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(null);
+        frame.setVisible(true);
+
+        login = inicio;
 
         String[] tiposCuenta = {"","Todas", "Activas", "Inactivas"};
         for(String tipo : tiposCuenta){
@@ -243,30 +240,36 @@ public class InterfazHolanda {
         List<Persona> res = acceso.buscarPersonas();
         for (Persona p : res) {
 
-            if(firstNameLabel.getText().equals(p.getNombre())){
-                res.add(p);
-                continue;
-            }if(!firstNameLabel.getText().isEmpty())continue;
-            if(textLastName.getText().equals(p.getApellido())){
-                res.add(p);
-                continue;
-            }if(!textLastName.getText().isEmpty())continue;
-            if(textCodPos.getText().equals(acceso.buscarClientes("numeroIdentificacion",p.getDni()).get(0).getDireccion().getCpostal())){
-                res.add(p);
-                continue;
-            }if(!textCodPos.getText().isEmpty())continue;
-            if(textStreet.getText().equals(acceso.buscarClientes("numeroIdentificacion",p.getDni()).get(0).getDireccion().getCalle())){
-                res.add(p);
-                continue;
-            }if(!textStreet.getText().isEmpty())continue;
-            if(textNumero.getText().equals(acceso.buscarClientes("numeroIdentificacion",p.getDni()).get(0).getDireccion().getNumero())){
-                res.add(p);
-                continue;
-            }if(!textNumero.getText().isEmpty())continue;
-            if(textCity.getText().equals(acceso.buscarClientes("numeroIdentificacion",p.getDni()).get(0).getDireccion().getCiudad())){
-                res.add(p);
-                continue;
-            }if(!textCity.getText().isEmpty())continue;
+            if(!textFirstName.getText().isEmpty()){
+                if(!textFirstName.getText().equals(p.getNombre())){
+                    continue;
+                }
+            }
+            if(!textLastName.getText().isEmpty()){
+                if(!textLastName.getText().equals(p.getApellido())){
+                    continue;
+                }
+            }
+            if(!textCodPos.getText().isEmpty()){
+                if(!textCodPos.getText().equals(acceso.buscarClientes("numeroIdentificacion",p.getDni()).get(0).getDireccion().getCpostal())){
+                    continue;
+                }
+            }
+            if(!textStreet.getText().isEmpty()){
+                if(!textStreet.getText().equals(acceso.buscarClientes("numeroIdentificacion",p.getDni()).get(0).getDireccion().getCalle())){
+                    continue;
+                }
+            }
+            if(!textNumero.getText().isEmpty()){
+                if(!textNumero.getText().equals(acceso.buscarClientes("numeroIdentificacion",p.getDni()).get(0).getDireccion().getNumero())){
+                    continue;
+                }
+            }
+            if(!textCity.getText().isEmpty()){
+                if(!textCity.getText().equals(acceso.buscarClientes("numeroIdentificacion",p.getDni()).get(0).getDireccion().getCiudad())){
+                    continue;
+                }
+            }
             res.add(p);
         }
         return res;
