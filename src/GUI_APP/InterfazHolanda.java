@@ -248,6 +248,7 @@ public class InterfazHolanda {
     public static void main(String[] args) {
         InterfazHolanda holanda = new InterfazHolanda(null);
         holanda.frame.setContentPane(holanda.mainPanel);
+        holanda.frame.setVisible(true);
     }
 
     public List<Persona> listaPersonas(){
