@@ -4,9 +4,9 @@ import Modelo.DBaccess;
 import Modelo.Persona;
 
 import javax.swing.*;
-import java.util.LinkedList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.ListIterator;
 
 public class InterfazHolanda {
     private JFrame frame;
@@ -36,16 +36,113 @@ public class InterfazHolanda {
 
     public InterfazHolanda(InicioSesion inicio){
         if(inicio==null){
-            this.frame=new JFrame();
-            this.frame.setBounds(100, 100, 900, 600);
-            this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            this.frame.getContentPane().setLayout(null);
-            this.frame.setVisible(true);
+            frame=new JFrame();
+            frame.setBounds(100, 100, 900, 600);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.getContentPane().setLayout(null);
+            frame.setResizable(false);
+            frame.setVisible(true);
         }else {
             login = inicio;
             this.frame = login.getFrame();
         }
 
+        comboBox1.setEnabled(false);
+        textNumeroProducto.setEnabled(false);
+
+        textFirstName.setEnabled(false);
+        textLastName.setEnabled(false);
+        textCity.setEnabled(false);
+        textCodPos.setEnabled(false);
+        textStreet.setEnabled(false);
+        textNumero.setEnabled(false);
+
+        bAplicarFiltro.setEnabled(false);
+        bLimpiar.setEnabled(false);
+
+        frame.setContentPane(mainPanel);
+
+        checkCuenta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(checkCuenta.isSelected()){
+                    checkCliente.setEnabled(false);
+
+                    comboBox1.setEnabled(true);
+                    textNumeroProducto.setEnabled(true);
+
+                    bAplicarFiltro.setEnabled(true);
+                    bLimpiar.setEnabled(true);
+
+                }else{
+                    checkCliente.setEnabled(true);
+
+                    comboBox1.setSelectedIndex(-1);
+
+                    comboBox1.setEnabled(false);
+                    textNumeroProducto.setEnabled(false);
+
+                    bAplicarFiltro.setEnabled(false);
+                    bLimpiar.setEnabled(false);
+                }
+            }
+        });
+
+        checkCliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(checkCliente.isSelected()){
+                    checkCuenta.setEnabled(false);
+
+                    textFirstName.setEnabled(true);
+                    textLastName.setEnabled(true);
+                    textCity.setEnabled(true);
+                    textCodPos.setEnabled(true);
+                    textStreet.setEnabled(true);
+                    textNumero.setEnabled(true);
+
+                    bAplicarFiltro.setEnabled(true);
+                    bLimpiar.setEnabled(true);
+
+                }else{
+                    checkCuenta.setEnabled(true);
+
+                    textFirstName.setEnabled(false);
+                    textLastName.setEnabled(false);
+                    textCity.setEnabled(false);
+                    textCodPos.setEnabled(false);
+                    textStreet.setEnabled(false);
+                    textNumero.setEnabled(false);
+
+                    bAplicarFiltro.setEnabled(false);
+                    bLimpiar.setEnabled(false);
+                }
+            }
+        });
+        bAplicarFiltro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TO_DO
+            }
+        });
+        bLimpiar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                limpiarCampos();
+            }
+        });
+    }
+
+    private void limpiarCampos() {
+        comboBox1.setSelectedIndex(-1);
+        textNumeroProducto.setText("");
+
+        textFirstName.setText("");
+        textLastName.setText("");
+        textCity.setText("");
+        textCodPos.setText("");
+        textStreet.setText("");
+        textNumero.setText("");
     }
 
     public static void main(String[] args) {
@@ -53,7 +150,7 @@ public class InterfazHolanda {
         holanda.frame.setContentPane(holanda.mainPanel);
     }
 
-    public List<Persona>  listaPersonas(){
+    public List<Persona> listaPersonas(){
         DBaccess acceso = new DBaccess();
         List<Persona> res = acceso.buscarPersonas();
         for (Persona p : res) {

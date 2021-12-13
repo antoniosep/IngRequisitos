@@ -90,7 +90,7 @@
                   </component>
                 </children>
               </grid>
-              <grid id="57cab" layout-manager="GridLayoutManager" row-count="13" column-count="12" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="57cab" layout-manager="GridLayoutManager" row-count="12" column-count="11" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <splitpane position="right"/>
@@ -194,35 +194,11 @@
                       <text value="Número"/>
                     </properties>
                   </component>
-                  <component id="94b06" class="javax.swing.JButton" binding="bAplicarFiltro">
-                    <constraints>
-                      <grid row="11" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Button"/>
-                    </properties>
-                  </component>
-                  <component id="9c33c" class="javax.swing.JButton" binding="bLimpiar">
-                    <constraints>
-                      <grid row="11" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Button"/>
-                    </properties>
-                  </component>
                   <vspacer id="68302">
                     <constraints>
                       <grid row="4" column="8" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                     </constraints>
                   </vspacer>
-                  <component id="e2f80" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="12" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value=""/>
-                    </properties>
-                  </component>
                   <component id="7a23d" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
                     <constraints>
                       <grid row="0" column="10" row-span="3" col-span="1" vsize-policy="0" hsize-policy="2" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
@@ -243,6 +219,27 @@
                     </constraints>
                     <properties>
                       <text value="Número Producto"/>
+                    </properties>
+                  </component>
+                  <vspacer id="aeb01">
+                    <constraints>
+                      <grid row="11" column="8" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <component id="94b06" class="javax.swing.JButton" binding="bAplicarFiltro">
+                    <constraints>
+                      <grid row="11" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Aplicar Filtro"/>
+                    </properties>
+                  </component>
+                  <component id="9c33c" class="javax.swing.JButton" binding="bLimpiar">
+                    <constraints>
+                      <grid row="11" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Limpiar"/>
                     </properties>
                   </component>
                 </children>
