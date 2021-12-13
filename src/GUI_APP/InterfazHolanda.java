@@ -42,7 +42,6 @@ public class InterfazHolanda {
             frame.setBounds(100, 100, 900, 600);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.getContentPane().setLayout(null);
-            frame.setResizable(false);
             frame.setVisible(true);
         }else {
             login = inicio;

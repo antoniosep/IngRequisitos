@@ -118,15 +118,10 @@ public class InicioSesion implements ActionListener{
         }
 
         if (acceso.inicioSesion(this.usuario.getText(),pass)!=null){
-
-            panel.setVisible(false);
-            frame.getContentPane().remove(panel);
-
             InterfazAlemania alemania = new InterfazAlemania(this);
+            frame.setVisible(false);
 
             //InterfazHolanda holanda = new InterfazHolanda(this);
-
-        }else{
 
         }
 
@@ -136,5 +131,9 @@ public class InicioSesion implements ActionListener{
         return frame;
     }
 
+    public void alternateVisible(){
+        if(frame.isVisible()) frame.setVisible(false);
+        else frame.setVisible(true);
+    }
 
 }

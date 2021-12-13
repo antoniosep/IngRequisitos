@@ -52,15 +52,13 @@ public class InterfazAlemania{
 	{
 		this.inicio=login;
 
-		if(login==null){
-			this.frame=new JFrame();
-			this.frame.setBounds(100, 100, 786, 470);
-			this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			this.frame.getContentPane().setLayout(null);
-			this.frame.setVisible(true);
-		}else{
-			this.frame=login.getFrame();
-		}
+		frame=new JFrame();
+		frame.setBounds(100, 100, 786, 470);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
+		frame.setVisible(true);
+
 		initialize();
 	}
 
@@ -122,9 +120,8 @@ public class InterfazAlemania{
 		btnCerrarSesin.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				panel.setVisible(false);
-				frame.getContentPane().remove(panel);
-				inicio.setPanel();
+				frame.dispose();
+				inicio.alternateVisible();
 			}
 		});
 
