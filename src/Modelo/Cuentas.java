@@ -1,14 +1,16 @@
 package Modelo;
 
+import java.sql.Date;
+
 public class Cuentas {
     private int id;
     private int numeroCuenta;
     private String estadoCuenta;
-    private int fechaApertura;
-    private int fechaCierre;
+    private Date fechaApertura;
+    private Date fechaCierre;
     private String entidadEbury;
 
-    public Cuentas(int id, int numeroCuenta, String estadoCuenta, int fechaApertura, int fechaCierre, String entidadEbury){
+    public Cuentas(int id, int numeroCuenta, String estadoCuenta, Date fechaApertura, Date fechaCierre, String entidadEbury){
         this.id=id;
         this.numeroCuenta = numeroCuenta;
         this.estadoCuenta = estadoCuenta;
@@ -41,19 +43,19 @@ public class Cuentas {
         this.estadoCuenta = estadoCuenta;
     }
 
-    public int getFechaApertura() {
+    public Date getFechaApertura() {
         return fechaApertura;
     }
 
-    public void setFechaApertura(int fechaApertura) {
+    public void setFechaApertura(Date fechaApertura) {
         this.fechaApertura = fechaApertura;
     }
 
-    public int getFechaCierre() {
+    public Date getFechaCierre() {
         return fechaCierre;
     }
 
-    public void setFechaCierre(int fechaCierre) {
+    public void setFechaCierre(Date fechaCierre) {
         this.fechaCierre = fechaCierre;
     }
 
@@ -63,5 +65,11 @@ public class Cuentas {
 
     public void setEntidadEbury(String entidadEbury) {
         this.entidadEbury = entidadEbury;
+    }
+
+    public String toString(){
+        String res ="";
+        res+=id+";"+numeroCuenta+";"+estadoCuenta+";"+fechaApertura.toString()+";"+fechaCierre.toString()+";"+entidadEbury+"\n";
+        return res;
     }
 }

@@ -1,9 +1,6 @@
 package GUI_APP;
 
-import Modelo.DBaccess;
-import Modelo.GuardarInforme;
-import Modelo.Persona;
-import Modelo.Transaccion;
+import Modelo.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 public class InterfazHolanda {
@@ -137,6 +135,8 @@ public class InterfazHolanda {
                     bAplicarFiltro.setEnabled(true);
                     bLimpiar.setEnabled(true);
 
+                    mostrarCuentas();
+
                 }else{
                     checkCliente.setEnabled(true);
 
@@ -166,6 +166,8 @@ public class InterfazHolanda {
 
                     bAplicarFiltro.setEnabled(true);
                     bLimpiar.setEnabled(true);
+
+                    mostrarCuentas();
 
                 }else{
                     checkCuenta.setEnabled(true);
@@ -289,6 +291,27 @@ public class InterfazHolanda {
         }
 
         return res;
+    }
+
+    public void mostrarCuentas(){
+        DBaccess bd = new DBaccess();
+        List<Cuentas> res = new LinkedList<Cuentas>();
+        res = bd.buscarCuentas();
+
+        String muestra="1";
+
+        for(Cuentas cuenta : res){
+            muestra+=cuenta.toString();
+        }
+        textPane1.setText(muestra);
+        //System.out.println(res.toString());
+    }
+
+    public void mostrarClientes(String nombreColumna,String filtro){
+        DBaccess bd = new DBaccess();
+        List<Clientes> res = new LinkedList<Clientes>();
+        res = bd.buscarClientes(nombreColumna,filtro);
+        //System.out.println(res.toString());
     }
 
     public String imprimirPersonas() {

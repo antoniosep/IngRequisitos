@@ -241,4 +241,61 @@ public class DBaccess {
         return res;
     }
 
+    public List<Cuentas> buscarCuentas(){
+        /* Aqui tenemos señoras y señores un codigo bien de chido para que
+         * podamos hacer SELECT a la bbdd pero seleccionando una columna y una
+         * restriccion, si queremos aplicar más de una condicion ajo y agua amigos
+         * */
+        List<Cuentas> res = new LinkedList<Cuentas>();
+        String selectQueryBody = "SELECT * FROM cuentaEbury";
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(selectQueryBody);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                res.add(new Cuentas(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDate(4), rs.getDate(5),rs.getString(6)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+    public List<Cuentas> buscarCuentas(String nombreColumna, String filtro){
+        /* Aqui tenemos señoras y señores un codigo bien de chido para que
+         * podamos hacer SELECT a la bbdd pero seleccionando una columna y una
+         * restriccion, si queremos aplicar más de una condicion ajo y agua amigos
+         * */
+        List<Cuentas> res = new LinkedList<Cuentas>();
+        String selectQueryBody = "SELECT * FROM cuenta WHERE "+ nombreColumna +"=?";
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(selectQueryBody);
+            preparedStatement.setString(1, filtro);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                res.add(new Cuentas(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDate(4), rs.getDate(5),rs.getString(6)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+    public List<Direccion> buscarDireccion(String nombreColumna, String filtro){
+        /* Aqui tenemos señoras y señores un codigo bien de chido para que
+         * podamos hacer SELECT a la bbdd pero seleccionando una columna y una
+         * restriccion, si queremos aplicar más de una condicion ajo y agua amigos
+         * */
+        List<Direccion> res = new LinkedList<Direccion>();
+        String selectQueryBody = "SELECT * FROM direccion";
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(selectQueryBody);
+            //preparedStatement.setString(1, filtro);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                res.add(new Direccion(rs.getInt(1), rs.getString(2), rs.getInt(3),rs.getString(4), rs.getString(5)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
 }
