@@ -5,15 +5,21 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Modelo.DBaccess;
+
 public class InicioSesion implements ActionListener{
     private JFrame frame;
     private JPanel panel;
-    private String prueba1="Antonio", prueba2="1234";
     private JTextField usuario;
     private JPasswordField password;
     private JLabel ok;
 
+    private static DBaccess acceso = null;
+
+
     public static void main(String[] args) {
+
+        acceso = new DBaccess();
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -25,6 +31,8 @@ public class InicioSesion implements ActionListener{
             }
         });
     }
+
+
 
     public InicioSesion(){
         frame = new JFrame();
@@ -78,9 +86,11 @@ public class InicioSesion implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         String pass="";
-        for(Character c : this.password.getPassword()){pass = pass + c;}
+        for(Character c : this.password.getPassword()){
+            pass = pass + c;
+        }
 
-        if (this.usuario.getText().compareTo(this.prueba1)==0 && pass.compareTo(this.prueba2)==0){
+        if (acceso.inicioSesion(this.usuario.getText(),pass)!=null){
             ok.setText("SI");
             panel.setVisible(false);
             frame.getContentPane().remove(panel);
@@ -90,9 +100,12 @@ public class InicioSesion implements ActionListener{
         }
 
         ok.setVisible(true);
+
     }
 
     public JFrame getFrame() {
         return frame;
     }
+
+
 }
