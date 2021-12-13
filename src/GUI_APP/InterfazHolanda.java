@@ -5,9 +5,11 @@ import Modelo.GuardarInforme;
 import Modelo.Persona;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class InterfazHolanda {
@@ -67,21 +69,61 @@ public class InterfazHolanda {
 
         frame.setContentPane(mainPanel);
 
-        /*
         healthCheck.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DBaccess bd = new DBaccess();
-                boolean control;
+                boolean control=false;
+
+                JFrame f = new JFrame();
+                f.setBounds(650, 300, 300, 180);
+                f.setResizable(false);
+                f.setVisible(true);
+                f.setLayout(null);
+                f.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
+
+                JPanel panel = new JPanel();
+                panel.setBounds(650, 300, 300, 180);
+                panel.setLayout(null);
+                f.setContentPane(panel);
+
+                JLabel texto = new JLabel();
+                texto.setBounds(20, 60, 150, 20);
+                texto.setText("CONEXIÓN:");
+                texto.setVisible(true);
+                panel.add(texto);
+
+                JButton ok = new JButton();
+                ok.setText("OK");
+                ok.setBounds(200, 60, 60, 20);
+                ok.setVisible(true);
+                panel.add(ok);
+
+                ok.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        f.dispose();
+                    }
+                });
+
                 control=bd.HealthCheck();
+
                 if(control==true){
+                    System.out.println("Conexión establecida");
+                    texto.setText("CONEXIÓN: ESTABLECIDA");
+                    //Esbrir gui cnoexion guay
 
                 }else{
+                    System.out.println("Error de conexión");
+                    texto.setText("CONEXIÓN: SIN CONEXIÓN");
+                    //Escribir gui mala conex
 
                 }
+                panel.setVisible(true);
             }
         });
-        */
+
         checkCuenta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

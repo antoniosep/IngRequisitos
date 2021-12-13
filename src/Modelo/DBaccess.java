@@ -34,17 +34,23 @@ public class DBaccess {
         }
         return acceso;
     }
-/*
-    public static boolean HealthCheck() throws SQLException {
+
+    public static boolean HealthCheck() {
         boolean res;
-
-        java.sql.Connection connect = DriverManager.getConnection(
-                "jdbc:mysql://localhost/some_database?user=some_user&password=some_password");
-
+        try {
+            conn = DriverManager.getConnection(BD_SERVER + "/" + BD_NAME, USER, PASS);
+            res=true;
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            res=false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            res=false;
+        }
 
         return res;
     }
-*/
+
     public Clientes inicioSesion(String usr, String psw) {
 
         Clientes cliente = buscarClientes("id",usr).get(0);
