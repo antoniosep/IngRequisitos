@@ -8,13 +8,34 @@ public class Clientes {
     private String estado;
     private Date fechaInicio;
     private String psw;
+    private Direccion direccion;
 
-    public Clientes(String id, String numeroidentificacion, String estado, Date fechaInicio, String psw){
+    public Clientes(String id, String numeroidentificacion, String estado, Date fechaInicio, String psw,Direccion direccion){
         this.id = id;
         this.numeroidentificacion = numeroidentificacion;
         this.estado = estado;
         this.fechaInicio = fechaInicio;
         this.psw = psw;
+        this.direccion = direccion;
+    }
+
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
+    }
+
+    public Clientes(String id){
+        DBaccess acceso = new DBaccess();
+        Clientes cliente = acceso.buscarClientes("nif",id).get(0);
+        this.id = cliente.getId();
+        this.numeroidentificacion = cliente.getNumeroidentificacion();
+        this.estado = cliente.getEstado();
+        this.fechaInicio = cliente.getFechaInicio();
+        this.psw = cliente.getPsw();
+        this.direccion = cliente.getDireccion();
     }
 
     public String getId() {

@@ -22,6 +22,12 @@ public class Persona {
     public Persona(String dni){
         DBaccess acceso = new DBaccess();
         Persona persona = acceso.buscarPersonas("dni", dni).get(0);
+        this.nombre = persona.getNombre();
+        this.segundoNombre = persona.getSegundoNombre();
+        this.apellido = persona.getApellido();
+        this.segundoApellido = persona.getSegundoApellido();
+        this.fechaNacimiento = persona.getFechanaciMiento();
+        this.dni = persona.getDni();
     }
 
     public static String getNombre() {
