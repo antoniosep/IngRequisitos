@@ -93,9 +93,9 @@ public class InicioSesion implements ActionListener{
             panel.setVisible(false);
             frame.getContentPane().remove(panel);
 
-            //InterfazAlemania alemania = new InterfazAlemania(this);
+            InterfazAlemania alemania = new InterfazAlemania(this);
 
-            InterfazHolanda holanda = new InterfazHolanda(this);
+            //InterfazHolanda holanda = new InterfazHolanda(this);
 
         }else{
             ok.setText("NO");

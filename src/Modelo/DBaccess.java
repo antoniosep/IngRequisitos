@@ -12,7 +12,7 @@ public class DBaccess {
     static final String USER = "grupo07";
     static final String PASS = "FjLWM6DNk6TJDzfV";
 
-    private static Connection conn;
+    public static Connection conn;
     private static DBaccess acceso = null;
 
     public DBaccess() {
@@ -34,7 +34,17 @@ public class DBaccess {
         }
         return acceso;
     }
+/*
+    public static boolean HealthCheck() throws SQLException {
+        boolean res;
 
+        java.sql.Connection connect = DriverManager.getConnection(
+                "jdbc:mysql://localhost/some_database?user=some_user&password=some_password");
+
+
+        return res;
+    }
+*/
     public Clientes inicioSesion(String usr, String psw) {
 
         Clientes cliente = buscarClientes("id",usr).get(0);

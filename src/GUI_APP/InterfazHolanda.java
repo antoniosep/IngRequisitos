@@ -1,11 +1,13 @@
 package GUI_APP;
 
 import Modelo.DBaccess;
+import Modelo.GuardarInforme;
 import Modelo.Persona;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
 
 public class InterfazHolanda {
@@ -61,6 +63,22 @@ public class InterfazHolanda {
         bLimpiar.setEnabled(false);
 
         frame.setContentPane(mainPanel);
+/*
+        healthCheck.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DBaccess bd = new DBaccess();
+                boolean control;
+                control=bd.HealthCheck();
+                if(control==true){
+
+                }else{
+
+                }
+            }
+        });
+
+*/
 
         checkCuenta.addActionListener(new ActionListener() {
             @Override

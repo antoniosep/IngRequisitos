@@ -97,6 +97,7 @@ public class InterfazAlemania{
 				frame.getContentPane().remove(panel);
 				//if(e.getSource()==)
 				InterfazInforme informe = new InterfazInforme(InterfazAlemania.this, 0);
+
 			}
 		});
 
@@ -131,10 +132,10 @@ public class InterfazAlemania{
 
 		panel_1.add(btnCerrarSesin);
 
-		JButton button = new JButton("?");
+		/*JButton button = new JButton("?");
 		button.setBounds(655, 18, 43, 42);
 		panel_1.add(button);
-
+*/
 		panel.setVisible(true);
 	}
 

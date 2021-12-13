@@ -9,25 +9,56 @@ import javax.swing.JFileChooser;
 
 public class GuardarInforme {
 
-    public static void main(String[] args) throws IOException {
+    private String texto;
+    private String nombre;
 
-        String txt="a tope jefe de equipo";
+    public GuardarInforme(String txt,String name){
+        this.texto=txt;
+        this.nombre=name;
+
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void ejecutar(String txt, String nombre) throws IOException {
+
+        if(nombre==null || nombre.length()==0){
+            nombre="informe";
+        }
+        if(txt==null || txt.length()==0){
+            txt="vacio";
+        }
+
         String filepath="none";
-        String archivo="e2.csv";
+        String archivo=nombre+".csv";
         Path path = Paths.get("");
         String origen = path.toAbsolutePath().normalize().toString();
         origen=origen+"\\"+archivo;
         filepath=explorer();
         if(filepath!="none") {
-        filepath=filepath+"\\"+archivo;
+            filepath=filepath+"\\"+archivo;
 
             GuardarCrear(txt, archivo);
             //System.out.println("Origen:"+origen);
             //System.out.println("Destino:"+filepath);
             moverArchivo(origen, filepath);
             //System.out.println("hola");
-        }
-    }
+    }}
+
 
     public static void GuardarCrear(String txt,String archivo){
 
