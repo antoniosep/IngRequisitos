@@ -34,8 +34,8 @@ public class JSONWrite {
             obj.put("Id", c.getId());
             obj.put("Numero cuenta", c.getNumeroCuenta());
             obj.put("Estado", c.getEstadoCuenta());
-            obj.put("Fecha apertura", c.getFechaApertura());
-            obj.put("Fecha de cierre", c.getFechaCierre());
+            obj.put("Fecha apertura", c.getFechaApertura().toString());
+            obj.put("Fecha de cierre", c.getFechaCierre().toString());
             obj.put("Entidad Ebury", c.getEntidadEbury());
 
             JSONObject productObject = new JSONObject();
@@ -43,11 +43,14 @@ public class JSONWrite {
 
             productList.add(productObject);
         }
+        JSONObject fin = new JSONObject();
+        fin.put("clientes", clientList);
+        fin.put("cuentas",productList);
+
 
         try {
             FileWriter file = new FileWriter("InformeHolanda.json");
-            file.write(clientList.toJSONString());
-            file.write(productList.toJSONString());
+            file.write(fin.toJSONString());
             file.flush();
             file.close();
         } catch (IOException e) {
