@@ -9,12 +9,12 @@ public class InterfazHolanda {
     private JCheckBox checkCuenta;
     private JCheckBox checkCliente;
     private JComboBox comboBox1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField5;
-    private JTextField textField6;
-    private JTextField textField1;
+    private JTextField textCity;
+    private JTextField textCodPos;
+    private JTextField textStreet;
+    private JTextField textLastName;
+    private JTextField textNumero;
+    private JTextField textFirstName;
     private JLabel firstNameLabel;
     private JLabel lastNameLabel;
     private JLabel city;
@@ -22,12 +22,16 @@ public class InterfazHolanda {
     private JLabel number;
     private JLabel CP;
     private JTextPane textPane1;
+    private JTextField textNumeroProducto;
+    private JButton bAplicarFiltro;
+    private JButton bLimpiar;
+    private JLabel numeroProductoLabel;
     private InicioSesion login;
 
     public InterfazHolanda(InicioSesion inicio){
         if(inicio==null){
             this.frame=new JFrame();
-            this.frame.setBounds(100, 100, 786, 470);
+            this.frame.setBounds(100, 100, 900, 600);
             this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.frame.getContentPane().setLayout(null);
             this.frame.setVisible(true);
