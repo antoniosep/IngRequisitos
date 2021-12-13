@@ -65,6 +65,9 @@ public class InterfazHolanda {
         bAplicarFiltro.setEnabled(false);
         bLimpiar.setEnabled(false);
 
+        textPane1.setEditable(false);
+
+        mainPanel.setVisible(true);
         frame.setContentPane(mainPanel);
 
         healthCheck.addActionListener(new ActionListener() {
@@ -194,7 +197,7 @@ public class InterfazHolanda {
                     textFirstName.setText(tipoCuenta);
                     textLastName.setText(numeroProducto);
 
-                    //mostrarFiltradoCuenta();
+                    mostrarFiltradoCuenta();
 
                 }else{
                     String nombre1, nombre2, ciudad, calle, numero, codPos;
@@ -205,7 +208,7 @@ public class InterfazHolanda {
                     numero=textNumero.getText();
                     codPos=textCodPos.getText();
 
-                    //mostrarFiltradoCliente();
+                    mostrarFiltradoCliente();
                 }
 
             }
@@ -216,6 +219,16 @@ public class InterfazHolanda {
                 limpiarCampos();
             }
         });
+    }
+
+    private void mostrarFiltradoCliente() {
+        String texto = imprimirPersonas();
+
+        textPane1.setText(texto);
+    }
+
+    private void mostrarFiltradoCuenta() {
+
     }
 
     private void limpiarCampos() {
@@ -252,6 +265,7 @@ public class InterfazHolanda {
             }
             if(!textCodPos.getText().isEmpty()){
                 if(!textCodPos.getText().equals(acceso.buscarClientes("numeroIdentificacion",p.getDni()).get(0).getDireccion().getCpostal())){
+                    System.out.println("p");
                     continue;
                 }
             }
@@ -271,11 +285,13 @@ public class InterfazHolanda {
                 }
             }
             res.add(p);
+
         }
+
         return res;
     }
 
-    public String toString() {
+    public String imprimirPersonas() {
         String res = "";
         List<Persona> aux = listaPersonas();
         for(Persona p : aux){
@@ -290,9 +306,9 @@ public class InterfazHolanda {
             res += p.getFechanaciMiento().toString();
             res += "\n";
             res += p.getDni();
-            res += "\n";
+            res += "\n\n";
         }
-        System.out.println(res);
+        //System.out.println(res);
         return res;
     }
 

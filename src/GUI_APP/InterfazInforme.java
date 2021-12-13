@@ -78,6 +78,8 @@ public class InterfazInforme {
 		panel_1.setBounds(10, 10, 732, 393);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
+		panel_1.setVisible(true);
+		panel_1.setAutoscrolls(true);
 
 		JButton atras = new JButton("Atr\u00E1s");
 		atras.setBounds(53, 23, 109, 25);
