@@ -71,6 +71,25 @@ public class DBaccess {
         }
         return res;
     }
+    /*
+    public static boolean HealthCheck() throws SQLException {
+        boolean res;
+        try {
+            conn = DriverManager.getConnection(BD_SERVER + "/" + BD_NAME, USER, PASS);
+            res=true;
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            res=false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            res=false;
+        }
+
+        return res;
+    }
+
+     */
+
 
     public List<Persona> buscarPersonas(){
         /* Aqui tenemos señoras y señores un codigo bien de chido para que
@@ -167,6 +186,26 @@ public class DBaccess {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 res.add(new Empresa(rs.getString(1), rs.getString(2), rs.getDate(3)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    public List<Direccion> buscarDireccion(String nombreColumna, String filtro){
+        /* Aqui tenemos señoras y señores un codigo bien de chido para que
+         * podamos hacer SELECT a la bbdd pero seleccionando una columna y una
+         * restriccion, si queremos aplicar más de una condicion ajo y agua amigos
+         * */
+        List<Direccion> res = new LinkedList<Direccion>();
+        String selectQueryBody = "SELECT * FROM direccion";
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(selectQueryBody);
+            //preparedStatement.setString(1, filtro);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                res.add(new Direccion(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4)));
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class InterfazHolanda {
@@ -67,21 +68,7 @@ public class InterfazHolanda {
 
         frame.setContentPane(mainPanel);
 
-        /*
-        healthCheck.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DBaccess bd = new DBaccess();
-                boolean control;
-                control=bd.HealthCheck();
-                if(control==true){
 
-                }else{
-
-                }
-            }
-        });
-        */
         checkCuenta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -176,6 +163,34 @@ public class InterfazHolanda {
                 limpiarCampos();
             }
         });
+        /*
+        healthCheck.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DBaccess bd = new DBaccess();
+                boolean control=false;
+                System.out.println("Holaasd");
+                try {
+                    control=bd.HealthCheck();
+                    System.out.println("Despues healthcheck");
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                if(control==true){
+                    System.out.println("Conexión establecida");
+                    //Esbrir gui cnoexion guay
+
+                }else{
+                    System.out.println("Error de conexión");
+                    //Escribir gui mala conex
+
+                }
+            }
+        });
+
+         */
+
+
     }
 
     private void limpiarCampos() {
