@@ -16,4 +16,52 @@ public class Cuentas {
         this.fechaCierre = fechaCierre;
         this.entidadEbury = entidadEbury;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getNumeroCuenta() {
+        return numeroCuenta;
+    }
+
+    public void setNumeroCuenta(int numeroCuenta) {
+        this.numeroCuenta = numeroCuenta;
+    }
+
+    public String getEstadoCuenta() {
+        return estadoCuenta;
+    }
+
+    public void setEstadoCuenta(String estadoCuenta) {
+        this.estadoCuenta = estadoCuenta;
+    }
+
+    public int getFechaApertura() {
+        return fechaApertura;
+    }
+
+    public void setFechaApertura(int fechaApertura) {
+        this.fechaApertura = fechaApertura;
+    }
+
+    public int getFechaCierre() {
+        return fechaCierre;
+    }
+
+    public void setFechaCierre(int fechaCierre) {
+        this.fechaCierre = fechaCierre;
+    }
+
+    public String getEntidadEbury() {
+        return entidadEbury;
+    }
+
+    public void setEntidadEbury(String entidadEbury) {
+        this.entidadEbury = entidadEbury;
+    }
 }
