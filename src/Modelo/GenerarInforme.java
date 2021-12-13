@@ -90,7 +90,7 @@ public class GenerarInforme {
     @Override
     public String toString() {
         String res = "";
-        List<Transaccion> aux = informeInicial();
+        List<Transaccion> aux = informeSemanal();
         for(Transaccion t : aux){
             res += t.getId();
             res += " ";
