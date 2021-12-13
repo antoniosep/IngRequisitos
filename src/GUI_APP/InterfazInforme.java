@@ -52,8 +52,10 @@ public class InterfazInforme {
 			this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.frame.getContentPane().setLayout(null);
 			this.frame.setVisible(true);
+			this.frame.setResizable(true);
 		}else{
 			this.frame= alemania.getFrame();
+			this.frame.setResizable(true);
 		}
 
 		initialize();
@@ -85,6 +87,7 @@ public class InterfazInforme {
 				panel.setVisible(false);
 				frame.remove(panel);
 
+				frame.setResizable(false);
 				alemania.setPanel();
 			}
 		});
