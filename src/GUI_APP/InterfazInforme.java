@@ -70,16 +70,17 @@ public class InterfazInforme {
 
 	public void setPanel(){
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 10, 752, 413);
+		panel.setBounds(10, 10, frame.getWidth(), frame.getHeight());
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(10, 10, 732, 393);
+		JTextPane panel_1 = new JTextPane();
+		panel_1.setBounds(10, 50, 360, 360);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		panel_1.setVisible(true);
 		panel_1.setAutoscrolls(true);
+		panel_1.setEditable(false);
 
 		JButton atras = new JButton("Atr\u00E1s");
 		atras.setBounds(53, 23, 109, 25);
@@ -93,38 +94,35 @@ public class InterfazInforme {
 				alemania.setPanel();
 			}
 		});
-		panel_1.add(atras);
+		panel.add(atras);
 
 		List<Transaccion> lista = new LinkedList<>();
 		GenerarInforme g= null;
 
 		String txt;
 		if(periodo==0) {//inicial
-
 			lista=g.informeInicial();
 			txt=lista.toString();
-			JLabel textPane = new JLabel(lista.toString());
-			textPane.setBounds(53, 58, 349, 311);
-			panel_1.add(textPane);
+			panel_1.setText(lista.toString());
+
 		}else{//semanal
 			lista=g.informeSemanal();
 			txt=lista.toString();
-			JLabel textPane = new JLabel(lista.toString());
-			textPane.setBounds(53, 58, 349, 311);
-			panel_1.add(textPane);
-			}
+			panel_1.setText(lista.toString());
+
+		}
 		textField = new JTextField();
 		textField.setBounds(425, 175, 165, 19);
-		panel_1.add(textField);
+		panel.add(textField);
 		textField.setColumns(10);
 
 		JLabel lblNewLabel = new JLabel(".csv");
 		lblNewLabel.setBounds(600, 175, 52, 19);
-		panel_1.add(lblNewLabel);
+		panel.add(lblNewLabel);
 
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.setBounds(425, 229, 123, 31);
-		panel_1.add(btnGuardar);
+		panel.add(btnGuardar);
 
 		btnGuardar.addActionListener(new ActionListener() {
 			@Override
