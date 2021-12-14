@@ -16,6 +16,9 @@ public class Empresa {
     public Empresa(String nif){
         DBaccess acceso = new DBaccess();
         Empresa empresa = acceso.buscarEmpresas("nif",nif).get(0);
+        this.nombre = empresa.getNombre();
+        this.nif = empresa.getNif();
+        this.fechaCierre = empresa.getFechaCierre();
     }
 
     public static void setNombre(String nombre) {

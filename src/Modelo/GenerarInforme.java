@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+
 public class GenerarInforme {
 
 
@@ -87,19 +88,10 @@ public class GenerarInforme {
         return res;
     }
 
+
     @Override
     public String toString() {
-        String res = "";
-        List<Transaccion> aux = informeSemanal();
-        for(Transaccion t : aux){
-            res += t.getId();
-            res += " ";
-            res += t.getFechaInstruccion().toString();
-            res += " ";
-            res += t.getFechaEjecucion().toString();
-            res += "\n";
-        }
-        System.out.println(res);
-        return res;
+        DBaccess acceso = new DBaccess();
+        return acceso.generarInformeSemanal();
     }
 }
