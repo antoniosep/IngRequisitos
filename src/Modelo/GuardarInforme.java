@@ -1,5 +1,7 @@
 package Modelo;
 
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
@@ -11,6 +13,9 @@ public class GuardarInforme {
 
     private String texto;
     private String nombre;
+    private String usuario;
+    private String contra;
+    public static String HOST="22";
 
     public GuardarInforme(String txt,String name){
         this.texto=txt;
@@ -42,7 +47,7 @@ public class GuardarInforme {
         if(txt==null || txt.length()==0){
             txt="vacio";
         }
-
+        SFTPServer server= new SFTPServer();
         String filepath="none";
         String archivo=nombre+".csv";
         Path path = Paths.get("");
@@ -57,6 +62,15 @@ public class GuardarInforme {
             //System.out.println("Destino:"+filepath);
             moverArchivo(origen, filepath);
             //System.out.println("hola");
+
+           /* try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }*/
+            server.envio(filepath, nombre);
+                JOptionPane.showMessageDialog(null, "Archivo enviado");
+
     }}
 
 
@@ -105,5 +119,8 @@ public class GuardarInforme {
         */
 
     }
+
+
+
 
 }

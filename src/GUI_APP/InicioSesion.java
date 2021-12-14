@@ -118,10 +118,10 @@ public class InicioSesion implements ActionListener{
         }
 
         if (acceso.inicioSesion(this.usuario.getText(),pass)!=null){
-            //InterfazAlemania alemania = new InterfazAlemania(this);
+            InterfazAlemania alemania = new InterfazAlemania(this);
             alternateVisible();
 
-            InterfazHolanda holanda = new InterfazHolanda(this);
+            //InterfazHolanda holanda = new InterfazHolanda(this);
 
         }
 

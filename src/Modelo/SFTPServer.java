@@ -43,13 +43,8 @@ public class SFTPServer {
 <version>0.1.54</version>
 </dependency>
 */
-    public SFTPServer() {
 
-
-
-    }
-
-    public static void envio(String ruta,String nombre){
+    public static void main(String[] args){
 
         try {
             Properties props = new Properties();
@@ -63,15 +58,15 @@ public class SFTPServer {
             String correoRemitente = "grupo07ebury@gmail.com";
             String passwordRemitente = "oumngwvfjleyutik";
             String correoReceptor = "grupo07ebury@gmail.com";
-            String asunto = "Mi primero correo en Java";
-            String mensaje = "Hola<br>Este es el contenido de mi primer correo desde <b>java</b><br><br>Por <b>Códigos de Programación</b>";
+            String asunto = "Informe solicitado";
+            //String mensaje = "Hola<br>Este es el contenido de mi primer correo desde <b>java</b><br><br>Por <b>Códigos de Programación</b>";
 
             BodyPart texto= new MimeBodyPart();
-            texto.setText("hola caracola");
+            texto.setText("Aqui tiene el informe solicitado");
 
             BodyPart adjunto= new MimeBodyPart();
-            adjunto.setDataHandler(new DataHandler(new FileDataSource(ruta)));
-            adjunto.setFileName(nombre);
+            adjunto.setDataHandler(new DataHandler(new FileDataSource("C:\\Users\\javie\\Downloads\\pruebaxd\\ei.csv")));
+            adjunto.setFileName("ei.csv");
 
             MimeMultipart m = new MimeMultipart();
             m.addBodyPart(texto);
@@ -82,7 +77,8 @@ public class SFTPServer {
 
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
             message.setSubject(asunto);
-            message.setText(mensaje, "ISO-8859-1", "html");
+            //message.setText(mensaje, "ISO-8859-1", "html");
+            message.setContent(m);
 
 
             Transport t = session.getTransport("smtp");
@@ -100,6 +96,72 @@ public class SFTPServer {
             Logger.getLogger(SFTPServer.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    public SFTPServer() {
+
+
 
     }
+
+    public static void envio(String ruta,String nombre){
+
+        try {
+                Properties props = new Properties();
+                props.setProperty("mail.smtp.host", "smtp.gmail.com");
+                props.setProperty("mail.smtp.starttls.enable", "true");
+                props.setProperty("mail.smtp.port", "587");
+                props.setProperty("mail.smtp.auth", "true");
+
+
+                Session session = Session.getDefaultInstance(props);
+
+                String correoRemitente = "grupo07ebury@gmail.com";
+                String passwordRemitente = "oumngwvfjleyutik";
+                String correoReceptor = "grupo07ebury@gmail.com";
+                String asunto = "Informe solicitado";
+                //String mensaje = "Hola<br>Este es el contenido de mi primer correo desde <b>java</b><br><br>Por <b>Códigos de Programación</b>";
+
+                BodyPart texto= new MimeBodyPart();
+                texto.setText("Aqui tiene el informe solicitado");
+
+                BodyPart adjunto= new MimeBodyPart();
+                adjunto.setDataHandler(new DataHandler(new FileDataSource(ruta)));
+
+
+                adjunto.setFileName(nombre);
+
+
+                MimeMultipart m = new MimeMultipart();
+                m.addBodyPart(texto);
+                m.addBodyPart(adjunto);
+
+                MimeMessage message = new MimeMessage(session);
+                message.setFrom(new InternetAddress(correoRemitente));
+
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
+                message.setSubject(asunto);
+                //message.setText(mensaje, "ISO-8859-1", "html");
+                message.setContent(m);
+
+
+                Transport t = session.getTransport("smtp");
+                t.connect(correoRemitente, passwordRemitente);
+
+                t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+
+
+                t.close();
+
+                //JOptionPane.showMessageDialog(null, "Correo Electronico Enviado");
+
+            } catch (AddressException ex) {
+                Logger.getLogger(SFTPServer.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (MessagingException ex) {
+                Logger.getLogger(SFTPServer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+
+
+        }
 }
