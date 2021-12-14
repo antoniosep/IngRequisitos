@@ -9,7 +9,7 @@ import org.json.simple.JSONObject;
 
 public class JSONWrite {
 
-    public static void ejectuar(List<Clientes> args) {
+    public static void ejecutar(List<Clientes> args) {
         DBaccess miBd = new DBaccess();
         List<Clientes> clientes;
         if(args == null){
