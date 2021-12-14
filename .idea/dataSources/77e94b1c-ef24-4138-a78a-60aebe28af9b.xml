@@ -881,142 +881,192 @@
     <table id="279" parent="2" name="cliente"/>
     <table id="280" parent="2" name="cuentaBanco"/>
     <table id="281" parent="2" name="cuentaEbury"/>
-    <table id="282" parent="2" name="empresa"/>
-    <table id="283" parent="2" name="pago"/>
-    <table id="284" parent="2" name="transaccion"/>
-    <column id="285" parent="277" name="nombre">
+    <table id="282" parent="2" name="direccion"/>
+    <table id="283" parent="2" name="empresa"/>
+    <table id="284" parent="2" name="pago"/>
+    <table id="285" parent="2" name="persona"/>
+    <table id="286" parent="2" name="transaccion"/>
+    <column id="287" parent="277" name="nombre">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="286" parent="277" name="apellido">
+    <column id="288" parent="277" name="apellido">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="287" parent="277" name="pais">
+    <column id="289" parent="277" name="pais">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="288" parent="277" name="moneda">
+    <column id="290" parent="277" name="moneda">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="289" parent="277" name="ibanCuenta">
+    <column id="291" parent="277" name="ibanCuenta">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="290" parent="278" name="monedaVenta">
+    <column id="292" parent="278" name="monedaVenta">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="291" parent="278" name="monedaCompra">
+    <column id="293" parent="278" name="monedaCompra">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="292" parent="278" name="tipoDeCambio">
+    <column id="294" parent="278" name="tipoDeCambio">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="293" parent="278" name="cantidadCompra">
+    <column id="295" parent="278" name="cantidadCompra">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="294" parent="278" name="cantidadVenta">
+    <column id="296" parent="278" name="cantidadVenta">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="295" parent="279" name="id">
+    <column id="297" parent="279" name="id">
       <Position>1</Position>
       <DataType>varchar(50)|0s</DataType>
     </column>
-    <column id="296" parent="279" name="numeroIdentificacion">
+    <column id="298" parent="279" name="numeroIdentificacion">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
     </column>
-    <column id="297" parent="279" name="estado">
+    <column id="299" parent="279" name="estado">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
     </column>
-    <column id="298" parent="279" name="fechaInicio">
+    <column id="300" parent="279" name="fechaInicio">
       <Position>4</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="299" parent="279" name="psw">
+    <column id="301" parent="279" name="psw">
       <Position>5</Position>
       <DataType>varchar(50)|0s</DataType>
     </column>
-    <column id="300" parent="280" name="moneda">
+    <column id="302" parent="279" name="direccion">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="303" parent="280" name="moneda">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="301" parent="280" name="ibanCuenta">
+    <column id="304" parent="280" name="ibanCuenta">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="302" parent="280" name="swift">
+    <column id="305" parent="280" name="swift">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="303" parent="280" name="pais">
+    <column id="306" parent="280" name="pais">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="304" parent="280" name="nombreBanco">
+    <column id="307" parent="280" name="nombreBanco">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="305" parent="281" name="id">
+    <column id="308" parent="281" name="id">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="306" parent="281" name="numeroCuenta">
+    <column id="309" parent="281" name="numeroCuenta">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="307" parent="281" name="estadoCuenta">
+    <column id="310" parent="281" name="estadoCuenta">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="308" parent="281" name="fechaApertura">
+    <column id="311" parent="281" name="fechaApertura">
       <Position>4</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="309" parent="281" name="fechaCierre">
+    <column id="312" parent="281" name="fechaCierre">
       <Position>5</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="310" parent="281" name="entidadEbury">
+    <column id="313" parent="281" name="entidadEbury">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="311" parent="282" name="nif">
+    <column id="314" parent="282" name="cpostal">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="315" parent="282" name="calle">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="316" parent="282" name="numero">
+      <Position>3</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="317" parent="282" name="ciudad">
+      <Position>4</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="318" parent="282" name="pais">
+      <Position>5</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="319" parent="283" name="nif">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="312" parent="282" name="nombre">
+    <column id="320" parent="283" name="nombre">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="313" parent="282" name="fechaCierre">
+    <column id="321" parent="283" name="fechaCierre">
       <Position>3</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="314" parent="283" name="moneda">
+    <column id="322" parent="284" name="moneda">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="315" parent="283" name="cantidad">
+    <column id="323" parent="284" name="cantidad">
       <Position>2</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="316" parent="284" name="id">
+    <column id="324" parent="285" name="nombre">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="325" parent="285" name="segundoNombre">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="326" parent="285" name="apellido">
+      <Position>3</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="327" parent="285" name="segundoApellido">
+      <Position>4</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="328" parent="285" name="fechaNacimiento">
+      <Position>5</Position>
+      <DataType>date|0s</DataType>
+    </column>
+    <column id="329" parent="285" name="dni">
+      <Position>6</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="330" parent="286" name="id">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="317" parent="284" name="fechaInstruccion">
+    <column id="331" parent="286" name="fechaInstruccion">
       <Position>2</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="318" parent="284" name="fechaEjecucion">
+    <column id="332" parent="286" name="fechaEjecucion">
       <Position>3</Position>
       <DataType>date|0s</DataType>
     </column>

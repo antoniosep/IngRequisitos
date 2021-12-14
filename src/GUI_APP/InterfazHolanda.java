@@ -221,12 +221,12 @@ public class InterfazHolanda {
     }
 
     private void mostrarFiltradoCliente() {
-        String texto = imprimirPersonas();
-
-        textPane1.setText(texto);
+        JSONWrite.ejecutar(listaClientesFiltrados());
     }
 
     private void mostrarFiltradoCuenta() {
+
+        JsonCuentas.ejecutar(listaCuentasFiltradas());
 
     }
 
@@ -248,7 +248,7 @@ public class InterfazHolanda {
         holanda.frame.setVisible(true);
     }
 
-    public List<Persona> listaPersonas(){
+    public List<Clientes> listaClientesFiltrados(){
         DBaccess acceso = new DBaccess();
         List<Persona> total = acceso.buscarPersonas();
         List<Persona> res = new ArrayList<>();
@@ -286,9 +286,37 @@ public class InterfazHolanda {
                 }
             }
             res.add(p);
+            System.out.println(p.toString());
 
         }
 
+        List<Clientes> clientes = new ArrayList<>();
+        for(Persona per : res){
+            clientes.addAll(acceso.buscarClientes("numeroIdentificacion", per.getDni()));
+        }
+
+        return clientes;
+    }
+
+    public List<Cuentas> listaCuentasFiltradas(){
+        DBaccess acceso = new DBaccess();
+        List<Cuentas> total = acceso.buscarCuentas();
+        List<Cuentas> res = new ArrayList<>();
+        for (Cuentas c : total) {
+
+            if(comboBox1.getSelectedIndex()>0){
+                if(c.getEstadoCuenta().equals((String)comboBox1.getSelectedItem())){
+                    continue;
+                }
+            }
+            if(!textNumeroProducto.getText().isEmpty()){
+                if(!textNumeroProducto.getText().equals(c.getNumeroCuenta())){
+                    continue;
+                }
+            }
+            res.add(c);
+
+        }
         return res;
     }
 
@@ -316,26 +344,5 @@ public class InterfazHolanda {
         //System.out.println(res.toString());
     }
     */
-
-    public String imprimirPersonas() {
-        String res = "";
-        List<Persona> aux = listaPersonas();
-        for(Persona p : aux){
-            res += p.getNombre();
-            res += " ";
-            res += p.getSegundoNombre();
-            res += " ";
-            res += p.getApellido();
-            res += "\n";
-            res += p.getSegundoApellido();
-            res += "\n";
-            res += p.getFechanaciMiento().toString();
-            res += "\n";
-            res += p.getDni();
-            res += "\n\n";
-        }
-        //System.out.println(res);
-        return res;
-    }
 
 }
