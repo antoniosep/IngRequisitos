@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -135,8 +136,6 @@ public class InterfazHolanda {
                     bAplicarFiltro.setEnabled(true);
                     bLimpiar.setEnabled(true);
 
-                    mostrarCuentas();
-
                 }else{
                     checkCliente.setEnabled(true);
 
@@ -166,8 +165,6 @@ public class InterfazHolanda {
 
                     bAplicarFiltro.setEnabled(true);
                     bLimpiar.setEnabled(true);
-
-                    mostrarCuentas();
 
                 }else{
                     checkCuenta.setEnabled(true);
@@ -253,8 +250,9 @@ public class InterfazHolanda {
 
     public List<Persona> listaPersonas(){
         DBaccess acceso = new DBaccess();
-        List<Persona> res = acceso.buscarPersonas();
-        for (Persona p : res) {
+        List<Persona> total = acceso.buscarPersonas();
+        List<Persona> res = new ArrayList<>();
+        for (Persona p : total) {
 
             if(!textFirstName.getText().isEmpty()){
                 if(!textFirstName.getText().equals(p.getNombre())){
@@ -294,6 +292,7 @@ public class InterfazHolanda {
         return res;
     }
 
+    /*
     public void mostrarCuentas(){
         DBaccess bd = new DBaccess();
         List<Cuentas> res = new LinkedList<Cuentas>();
@@ -307,13 +306,16 @@ public class InterfazHolanda {
         textPane1.setText(muestra);
         //System.out.println(res.toString());
     }
+    */
 
+    /*
     public void mostrarClientes(String nombreColumna,String filtro){
         DBaccess bd = new DBaccess();
         List<Clientes> res = new LinkedList<Clientes>();
         res = bd.buscarClientes(nombreColumna,filtro);
         //System.out.println(res.toString());
     }
+    */
 
     public String imprimirPersonas() {
         String res = "";
