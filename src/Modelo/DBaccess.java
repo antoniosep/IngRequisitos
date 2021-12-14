@@ -3,6 +3,7 @@ package Modelo;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Date;
 
 public class DBaccess {
 
@@ -298,4 +299,32 @@ public class DBaccess {
         return res;
     }
 
+    public String generarInformeSemanal() {
+        String selectQueryBody = "SELECT ibanCuenta, apellido, nombre, calle, ciudad, cpostal, direccion.pais, cliente.id, cuentaEbury.id, fechaNacimiento " +
+                "FROM persona, cuentaBanco, cuentaEbury, cliente, direccion " +
+                "WHERE cuentaEbury.numeroCuenta = cuentaBanco.ibanCuenta AND cliente.id= cuentaEbury.id AND cliente.numeroIdentificacion = persona.dni;";
+        String res = null;
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(selectQueryBody);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                res += rs.getString(1) + " ";
+                res += rs.getString(2) + " ";
+                res += rs.getString(3) + " ";
+                res += rs.getString(4) + " ";
+                res += rs.getString(5) + " ";
+                res += rs.getInt(6) + " ";
+                res += rs.getString(7) + " ";
+                res += rs.getString(8) + " ";
+                res += rs.getString(9) + " ";
+                res += rs.getDate(10) + " ";
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        System.out.println(res);
+        return res;
+    }
 }
+
+
