@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 import Modelo.DBaccess;
+import GUI_APP.Registrar;
 
 public class InicioSesion implements ActionListener{
     private JFrame frame;
@@ -18,6 +19,7 @@ public class InicioSesion implements ActionListener{
     private JPasswordField password;
     private JLabel user, pass, loginIcon;
     private JButton entrar;
+    private JButton registrar;
 
     private static DBaccess acceso = null;
 
@@ -76,6 +78,7 @@ public class InicioSesion implements ActionListener{
 
         panel.add(b1);
 
+
         user=new JLabel();
         user.setText("USER:");
         user.setBounds(20, 170, 60, 30);
@@ -105,6 +108,19 @@ public class InicioSesion implements ActionListener{
         entrar.setEnabled(true);
         panel.add(entrar);
 
+        registrar=new JButton();
+        registrar.setText("Registrar");
+        registrar.setBounds(10, 100, 100, 40);
+        registrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                alternateVisible();
+                Registrar r = new Registrar(null);
+
+            }
+        });
+        panel.add(registrar);
+
         panel.setVisible(true);
 
     }
@@ -112,20 +128,24 @@ public class InicioSesion implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String pass="";
-        for(Character c : this.password.getPassword()){
-            pass = pass + c;
-        }
 
-        if (acceso.inicioSesion(this.usuario.getText(),pass)!=null){
-            InterfazAlemania alemania = new InterfazAlemania(this);
-            alternateVisible();
+            String pass = "";
+            for (Character c : this.password.getPassword()) {
+                pass = pass + c;
+            }
 
-            //InterfazHolanda holanda = new InterfazHolanda(this);
 
-        }
+            if (acceso.inicioSesion(this.usuario.getText(), pass) != null) {
+                //InterfazAlemania alemania = new InterfazAlemania(this);
+                alternateVisible();
+
+                InterfazHolanda holanda = new InterfazHolanda(this);
+
+            }
 
     }
+
+
 
     public JFrame getFrame() {
         return frame;
