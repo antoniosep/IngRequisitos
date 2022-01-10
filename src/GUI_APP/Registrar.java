@@ -32,14 +32,13 @@ public class Registrar {
 
     public Registrar(InicioSesion inicioSesion){
 
+        inicio = inicioSesion;
+
         frame=new JFrame();
-        frame.setBounds(100, 100, 600, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setBounds(inicio.getFrame().getX(), inicio.getFrame().getY(), 600, 300);
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
         frame.setContentPane(panel1);
-        frame.setResizable(false);
-        this.inicio=inicioSesion;
 
         textNumeroProducto.setEnabled(false);
         textFirstName.setEnabled(false);
@@ -50,6 +49,7 @@ public class Registrar {
         textNumero.setEnabled(false);
 
         bRegistrar.setEnabled(false);
+        bAtras.setEnabled(true);
 
         cuentaCheckBox.addActionListener(new ActionListener() {
             @Override
@@ -66,7 +66,6 @@ public class Registrar {
                     textNumero.setEnabled(false);
 
                     bRegistrar.setEnabled(true);
-                    bAtras.setEnabled(true);
 
                 }else{
                     clienteCheckBox.setEnabled(true);
@@ -81,7 +80,6 @@ public class Registrar {
                     textNumero.setEnabled(false);
 
                     bRegistrar.setEnabled(false);
-                    bAtras.setEnabled(true);
                 }
             }
         });
@@ -89,8 +87,13 @@ public class Registrar {
         bAtras.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InicioSesion inicio = new InicioSesion();
-                alternateVisible();
+                int x = frame.getX();
+                int y = frame.getY();
+
+                frame.dispose();
+
+                inicio.restoreDimensions(x, y);
+                inicio.alternateVisible();
             }
         });
 
@@ -109,7 +112,6 @@ public class Registrar {
                     textNumero.setEnabled(true);
 
                     bRegistrar.setEnabled(true);
-                    bAtras.setEnabled(true);
 
                 }else{
                     cuentaCheckBox.setEnabled(true);
@@ -123,7 +125,6 @@ public class Registrar {
                     textNumero.setEnabled(false);
 
                     bRegistrar.setEnabled(false);
-                    bAtras.setEnabled(true);
                 }
             }
         });
@@ -137,7 +138,7 @@ public class Registrar {
         r.frame.setContentPane(r.panel1);
         r.frame.setVisible(true);
 
-}
+    }
 
     public void alternateVisible(){
         if(frame.isVisible()) frame.setVisible(false);

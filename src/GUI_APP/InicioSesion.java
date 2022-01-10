@@ -115,7 +115,7 @@ public class InicioSesion implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 alternateVisible();
-                Registrar r = new Registrar(null);
+                Registrar r = new Registrar(InicioSesion.this);
 
             }
         });
@@ -154,6 +154,10 @@ public class InicioSesion implements ActionListener{
     public void alternateVisible(){
         if(frame.isVisible()) frame.setVisible(false);
         else frame.setVisible(true);
+    }
+
+    public void restoreDimensions(int x, int y){
+        frame.setBounds(x, y, 500, 300);
     }
 
 }
